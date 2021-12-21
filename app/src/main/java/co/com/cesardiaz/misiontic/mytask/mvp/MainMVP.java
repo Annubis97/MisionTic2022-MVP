@@ -9,13 +9,19 @@ public interface MainMVP {
 
 
         List<TaskItem> getTasks();
+
+        void saveTask(TaskItem task);
     }
     interface Presenter {
         void loadTasks();
-        void addNewTAsk();
+        void addNewTask();
     }
     interface View {
 
         void showTaskList(List<TaskItem> items);
+
+        String getTaskDescription();
+
+        void addTaskToList(TaskItem task);
     }
 }

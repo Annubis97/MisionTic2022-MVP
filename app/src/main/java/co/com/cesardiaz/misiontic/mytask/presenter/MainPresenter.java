@@ -1,5 +1,9 @@
 package co.com.cesardiaz.misiontic.mytask.presenter;
 
+import android.util.Log;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import co.com.cesardiaz.misiontic.mytask.model.MainInteractor;
@@ -23,7 +27,12 @@ public class MainPresenter implements MainMVP.Presenter {
     }
 
     @Override
-    public void addNewTAsk() {
-
+    public void addNewTask() {
+        Log.i(MainPresenter.class.getSimpleName(), "Add new Task");
+        String description = view.getTaskDescription();
+        String date = SimpleDateFormat.getDateTimeInstance().format(new Date());
+        TaskItem task = new TaskItem(description, date);
+        model.saveTask(task);
+        view.addTaskToList(task);
     }
 }
